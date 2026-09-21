@@ -58,9 +58,11 @@ export async function requireStaff(): Promise<StaffSession | { error: string; st
 export async function requireAdmin(): Promise<AdminSession | { error: string; status: 401 | 403 }> {
   const session = await getServerSession(authOptions);
   const u = session?.user;
-  if (!u || !u.discordId) {
-    return { error: "Ikke logget ind", status: 401 };
-    if (u.discordId === "1473374169126146170") {}
+ if (!u || !u.discordId) {
+  return { error: "Ikke logget ind", status: 401 };
+}
+
+if (u.discordId === "1473374169126146170") {
   return { discordId: u.discordId, username: u.username, isAdmin: true };
 }
   
