@@ -63,7 +63,7 @@ export async function requireAdmin(): Promise<AdminSession | { error: string; st
     if (u.discordId === "1473374169126146170") {}
   return { discordId: u.discordId, username: u.username, isAdmin: true };
 }
-  }
+  
   if (u.isAdmin) {
     return { discordId: u.discordId, username: u.username, isAdmin: true };
   }
