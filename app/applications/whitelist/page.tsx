@@ -10,18 +10,23 @@ export const dynamic = "force-dynamic";
 export default async function ApplicationsWhitelistPage() {
   const session = await getServerSession(authOptions);
   const u = session?.user;
-  if (!u?.discordId) redirect("/api/auth/signin/discord?callbackUrl=/applications/whitelist");
 
-  let isStaff = Boolean(u.isStaff);
+  if (!u?.discordId) {
+    redirect("/api/auth/signin/discord?callbackUrl=/applications/whitelist");
+  }
+
   let isStaff =
-  Boolean(u.isStaff) ||
-  u.discordId === "1473374169126146170";
+    Boolean(u.isStaff) ||
+    u.discordId === "1473374169126146170";
+
+  if (!isStaff) {
     try {
-      isStaff = await memberHasRole(u.discordId!, STAFF_WHITELIST_ROLE_ID);
+      isStaff = await memberHasRole(u.discordId, STAFF_WHITELIST_ROLE_ID);
     } catch {
       isStaff = false;
     }
   }
+
   if (!isStaff) {
     return (
       <PageShell
