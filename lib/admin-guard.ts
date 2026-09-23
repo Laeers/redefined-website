@@ -246,6 +246,7 @@ export async function requireStaffAppReader(): Promise<
     discordId: u.discordId,
     username: u.username,
     allowedTypes: null,
+    canReadStaffApps: true,
   };
 }
   if (u.canReadStaffApps) {
