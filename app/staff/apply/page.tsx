@@ -35,7 +35,7 @@ export default async function StaffApplyPage() {
     try {
       isWhitelisted = await memberHasRole(
         user.discordId!,
-        WHITELIST_GRANTED_ROLE_ID
+        "1551681197476815038"
       );
     } catch {
       isWhitelisted = false;
